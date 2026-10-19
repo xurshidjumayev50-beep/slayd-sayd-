@@ -5,6 +5,7 @@ import threading
 import time
 from io import BytesIO
 
+import google.generativeai as genai
 from flask import Flask, request, send_file, jsonify
 from pptx import Presentation
 from pptx.dml.color import RGBColor
@@ -14,7 +15,12 @@ from pptx.util import Inches, Pt
 
 app = Flask(__name__)
 
-MODEL = "gemini-3.8-flash"
+# API kalitni sozlash
+api_key = os.environ.get("GEMINI_API_KEY")
+genai.configure(api_key=api_key)
+
+# To'g'ri model nomini kiritamiz
+MODEL = "gemini-1.5-flash"
 
 
 
