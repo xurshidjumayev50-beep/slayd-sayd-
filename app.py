@@ -16,8 +16,7 @@ app = Flask(__name__)
 
 MODEL = "gemini-3.8-flash"
 
-# API kalitni to'g'ridan-to'g'ri kodga yozish (lokal test uchun)
-(os.environ.get("GEMINI_API_KEY")
+
 
 THEMES = {
     "ko'k": {"bg": "1F3A5F", "title": "FFFFFF", "text": "E8EEF5"},
