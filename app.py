@@ -123,7 +123,7 @@ def generate_content(topic, count, lang_key):
         raise RuntimeError(
             "GEMINI_API_KEY topilmadi. Terminalda: export GEMINI_API_KEY='kalitingiz'"
         )
-    import google.generativeai as genai  # pip install google-genai
+    from google import genai  # pip install google-genai
 
     language = LANGUAGES.get(lang_key, LANGUAGES["uz"])
     prompt = f"""Quyidagi mavzu bo'yicha taqdimot (slaydlar) tayyorla.
