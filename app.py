@@ -123,7 +123,7 @@ def generate_content(topic, count, lang_key):
         raise RuntimeError(
             "GEMINI_API_KEY topilmadi. Terminalda: export GEMINI_API_KEY='kalitingiz'"
         )
-    import google.generativeai as genai  # pip install google-genai
+    from google import genai  # pip install google-genai
 
     language = LANGUAGES.get(lang_key, LANGUAGES["uz"])
     prompt = f"""Quyidagi mavzu bo'yicha taqdimot (slaydlar) tayyorla.
@@ -140,9 +140,10 @@ Talablar:
 Javobni FAQAT JSON ko'rinishida qaytar, boshqa hech narsa yozma:
 {{"title": "taqdimot nomi", "slides": [{{"title": "slayd sarlavhasi", "bullets": ["band 1", "band 2"]}}]}}"""
 
-    client = # genai.Client removed()  # kalitni GEMINI_API_KEY o'zgaruvchisidan oladi
-    interaction = client.interactions.create(model=MODEL, input=prompt)
-    text = (interaction.output_text or "").strip()
+    model = genai.GenerativeModel(MODEL)
+    response = model.generate_content(prompt)
+    text = (response.text or "").strip()
+    
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
     start, end = text.find("{"), text.rfind("}")
     if start == -1 or end == -1:
