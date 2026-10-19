@@ -140,7 +140,7 @@ Talablar:
 Javobni FAQAT JSON ko'rinishida qaytar, boshqa hech narsa yozma:
 {{"title": "taqdimot nomi", "slides": [{{"title": "slayd sarlavhasi", "bullets": ["band 1", "band 2"]}}]}}"""
 
-    client = genai.Client()  # kalitni GEMINI_API_KEY o'zgaruvchisidan oladi
+    client = # genai.Client removed()  # kalitni GEMINI_API_KEY o'zgaruvchisidan oladi
     interaction = client.interactions.create(model=MODEL, input=prompt)
     text = (interaction.output_text or "").strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
