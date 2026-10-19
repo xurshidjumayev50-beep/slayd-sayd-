@@ -1,1 +1,4 @@
-aiogram>=3.4
+flask
+python-pptx
+google-genai
+gunicorn
